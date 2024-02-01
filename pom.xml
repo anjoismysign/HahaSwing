@@ -6,7 +6,7 @@
 
     <groupId>me.anjoismysign</groupId>
     <artifactId>HahaSwing</artifactId>
-    <version>1.0-SNAPSHOT</version>
+    <version>1.0</version>
 
     <properties>
         <maven.compiler.source>16</maven.compiler.source>
@@ -18,7 +18,7 @@
         <dependency>
             <groupId>me.anjoismysign.anjo</groupId>
             <artifactId>anjo</artifactId>
-            <version>0.3.9m</version>
+            <version>0.3.10b</version>
         </dependency>
     </dependencies>
 
