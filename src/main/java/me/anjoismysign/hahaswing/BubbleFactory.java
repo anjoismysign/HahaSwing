@@ -82,34 +82,57 @@ public class BubbleFactory {
     }
 
     /**
-     * Displays a controller bubble to the user.
+     * Displays a simple controller bubble to the user.
      *
      * @param title      The title of the bubble.
      * @param components The components of the bubble.
      * @return A bubble which can be blown to get the selected object.
      */
-    public Bubble<AnjoPane> controller(@NotNull String title,
-                                       @NotNull AnjoComponent... components) {
-        return controller(null, title, null, null, components);
+    public Bubble<AnjoPane> simpleController(@NotNull String title,
+                                             @NotNull AnjoComponent... components) {
+        return smartController(null, title, null, null, components);
+    }
+
+    /**
+     * Displays a smart controller bubble to the user.
+     * If the image is not null, the taskbar icon will be changed.
+     *
+     * @param onPop      The consumer to be called when the bubble is popped.
+     * @param title      The title of the bubble.
+     * @param image      The image of the bubble.
+     * @param onDrop     The consumer to be called when a file is dropped.
+     * @param components The components of the bubble.
+     * @return A bubble which can be blown to get the selected object.
+     */
+    public Bubble<AnjoPane> smartController(@Nullable Consumer<AnjoPane> onPop,
+                                            @NotNull String title,
+                                            @Nullable Image image,
+                                            @Nullable Consumer<File> onDrop,
+                                            @NotNull AnjoComponent... components) {
+        return controller(onPop, title, image, image != null, onDrop, components);
     }
 
     /**
      * Displays a controller bubble to the user.
      *
-     * @param onPop      The consumer to be called when the bubble is popped.
-     * @param title      The title of the bubble.
-     * @param image      The image of the bubble.
-     * @param components The components of the bubble.
+     * @param onPop             The consumer to be called when the bubble is popped.
+     * @param title             The title of the bubble.
+     * @param image             The image of the bubble.
+     * @param changeTaskbarIcon Whether the taskbar icon should be changed.
+     *                          Some operating systems do not support this feature,
+     *                          such as the new MacOS Sonoma.
+     * @param components        The components of the bubble.
      * @return A bubble which can be blown to get the selected object.
      */
     public Bubble<AnjoPane> controller(@Nullable Consumer<AnjoPane> onPop,
                                        @NotNull String title,
                                        @Nullable Image image,
+                                       boolean changeTaskbarIcon,
                                        @Nullable Consumer<File> onDrop,
                                        @NotNull AnjoComponent... components) {
         Objects.requireNonNull(title, "'title' cannot be null");
         Objects.requireNonNull(components, "'components' cannot be null");
-        AnjoPane anjoPane = AnjoPane.build(title, OptionType.OK_CANCEL, image, onDrop, components);
+        AnjoPane anjoPane = AnjoPane.build(title, OptionType.OK, image, changeTaskbarIcon, onDrop, components);
         Bubble<AnjoPane> bubble = new Bubble<>() {
             public void pop() {
                 if (onPop != null)
@@ -143,7 +166,7 @@ public class BubbleFactory {
      * @return A bubble which can be blown to get the selected object.
      */
     @NotNull
-    public <T> Bubble<T> selector(@NotNull Collection<T> collection) {
+    public <T> Bubble<T> simpleSelector(@NotNull Collection<T> collection) {
         return selector(collection, null, null);
     }
 

@@ -4,9 +4,26 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>me.anjoismysign</groupId>
-    <artifactId>HahaSwing</artifactId>
-    <version>1.0</version>
+    <groupId>me.anjoismysign.hahaswing</groupId>
+    <artifactId>hahaswing</artifactId>
+    <version>1.0.2</version>
+
+    <name>HahaSwing</name>
+
+    <scm>
+        <connection>scm:git:git@github.com:anjoismysign/HahaSwing.git</connection>
+        <developerConnection>scm:git:git@github.com:anjoismysign/HahaSwing.git</developerConnection>
+        <url>https://github.com/anjoismysign/HahaSwing</url>
+        <tag>HEAD</tag>
+    </scm>
+
+    <distributionManagement>
+        <repository>
+            <id>github</id>
+            <name>GitHub anjoismysign Apache Maven Packages</name>
+            <url>https://maven.pkg.github.com/anjoismysign/HahaSwing</url>
+        </repository>
+    </distributionManagement>
 
     <properties>
         <maven.compiler.source>16</maven.compiler.source>
@@ -14,11 +31,34 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>17</source>
+                    <target>17</target>
+                </configuration>
+                <version>3.10.1</version>
+            </plugin>
+        </plugins>
+        <resources>
+            <resource>
+                <directory>src/main/resources</directory>
+                <filtering>true</filtering>
+            </resource>
+        </resources>
+        <finalName>${project.name}-${project.version}</finalName>
+    </build>
+
     <dependencies>
         <dependency>
             <groupId>me.anjoismysign.anjo</groupId>
             <artifactId>anjo</artifactId>
-            <version>0.3.10b</version>
+            <version>0.3.12d</version>
+            <scope>compile</scope>
         </dependency>
     </dependencies>
 
