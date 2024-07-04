@@ -137,6 +137,8 @@ public class BubbleFactory {
             public void pop() {
                 if (onPop != null)
                     onPop.accept(anjoPane);
+                else
+                    System.exit(0);
             }
 
             public boolean supportsPop() {
