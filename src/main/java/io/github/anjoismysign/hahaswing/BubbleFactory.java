@@ -1,13 +1,13 @@
-package me.anjoismysign.hahaswing;
+package io.github.anjoismysign.hahaswing;
 
-import me.anjoismysign.anjo.swing.AnjoComponent;
-import me.anjoismysign.anjo.swing.AnjoPane;
-import me.anjoismysign.anjo.swing.OptionType;
-import me.anjoismysign.anjo.swing.components.AnjoComboBox;
+import io.github.anjoismysign.anjo.swing.AnjoComponent;
+import io.github.anjoismysign.anjo.swing.AnjoPane;
+import io.github.anjoismysign.anjo.swing.OptionType;
+import io.github.anjoismysign.anjo.swing.components.AnjoComboBox;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-import java.awt.*;
+import java.awt.Image;
 import java.io.File;
 import java.util.Collection;
 import java.util.HashMap;

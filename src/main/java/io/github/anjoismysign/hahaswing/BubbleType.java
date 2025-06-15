@@ -1,4 +1,4 @@
-package me.anjoismysign.hahaswing;
+package io.github.anjoismysign.hahaswing;
 
 public enum BubbleType {
     SELECTOR,
